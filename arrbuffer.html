@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input onchange="change(this)" multiple accept="image/*" type="file" class="file"/>
+</body>
+<script>
+    var ab=new ArrayBuffer(80);
+        var dv = new DataView(ab);
+        data = 1
+        dv.setInt8(0,data)
+        dv.getUint8(0)
+        var buffer=dv.buffer;
+        console.log(buffer)
+    // function change(file){
+    //     console.log(file.files[0])
+    //     let that = this
+    //     var reader = new FileReader();
+    //     reader.readAsArrayBuffer(file.files[0]);
+    //     reader.onload = function loaded(evt) {
+    //         console.log(evt)
+    //       var binaryString = evt.target.result.slice(0, 10*1024*1024);
+    //       console.log(binaryString)
+    //     let c =   String.fromCharCode.apply(null, new Uint8Array(binaryString));
+    //     console.log(c)
+    //     //   that.websocketsend({file:binaryString});
+    //     }
+    // }
+</script>
+</html>

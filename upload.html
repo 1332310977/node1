@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div>
+        <input type="file" onchange="change(this)" multiple accept="image/*" class="file" />
+        <div class="progress">0</div>
+        <div class="ben">上传</div>
+    </div>
+</body>
+    <script>
+            let file = null,index=0
+            function change(e){
+                file = e.files
+            }
+            let btn = document.querySelector('.ben'),
+            progress = document.querySelector(".progress")
+            btn.onclick = function(){
+                UpLoadImg()
+            }
+            function UpLoadImg(){
+                if(index<file.length){
+                    let xtp = new XMLHttpRequest();
+                    var formData = new FormData();
+                    formData.append("file", file[index]);
+                    xtp.onreadystatechange = function(){
+                        if(xtp.readyState ===4 && xtp.status===200){
+                            index++
+                            UpLoadImg()
+                        }
+                    }
+                    xtp.upload.addEventListener("progress", function(event) {
+                    if(event.lengthComputable){
+                        progress.style.width = Math.ceil(event.loaded * 100 / event.total) + "%";
+                    }
+                    }, false);
+                    xtp.open("POST",'/UpImg')
+                    xtp.send(formData)
+                }
+            }
+
+            
+    </script>
+</html>

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div></div>
+</body>
+</html>
+<script>
+    window.onload = ()=>{
+        let ws = new WebSocket('ws://127.0.0.1:8081')
+        ws.onopen = function(){
+            ws.send(JSON.stringify({
+                "id":"A2",
+                "login":true,
+            }));
+        }
+        ws.onmessage = function(e){
+            console.log(e)
+        }
+
+        ws.onerror = function(e){
+            console.log('err'+e)
+        }
+    }
+</script>

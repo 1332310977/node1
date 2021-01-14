@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div onclick="post()">111</div>
+</body>
+<script>
+    function post(){
+        console.log(Buffer)
+        // let htp = new XMLHttpRequest()
+        // htp.open('post','http://127.0.0.1:80/SendBuff',)
+        // htp.responseType = "arraybuffer";
+        // htp.onreadystatechange = function(){
+        //      if(htp.readyState ===4 && htp.status===200){
+
+        //         const buf = new Buffer.from(htp.response, 'binary')
+        //         // 再输入到 Blob 生成文件
+        //         let blob = new Blob([buf], {type: 'application/doc'});
+        //         let a = document.createElement('a')
+        //         // 指定生成的文件名
+        //         a.download = num + '.doc'
+        //         a.href = URL.createObjectURL(blob)
+        //         document.body.appendChild(a)
+        //         a.click()
+        //         document.body.removeChild(a)
+
+        //         //  console.log(htp)
+        //         // let contentUrl = window.URL.createObjectURL(new Blob([JSON.parse(htp.response).data.data])) 
+        //         // let link = document.createElement('a')
+        //         // link.style.display = 'none'
+        //         // link.href = contentUrl
+        //         // let fileName = JSON.parse(htp.response).name
+        //         // link.setAttribute('download', fileName) // 文件名称，这里很重要，如果没有完整的文件名(包括扩展名)，下载下来还需要自行添加
+        //         // document.body.appendChild(link)
+        //         // link.click()
+        //         // window.URL.revokeObjectURL(contentUrl)
+        //     }
+        // }
+        // htp.send()
+    }
+</script>
+</html>
