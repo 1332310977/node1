@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="cn" >
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.5.1/jquery.js"></script>
+    <title>Document</title>
+</head>
+<body>
+    <div class="sql">
+        <h1>数据库数据</h1>
+    </div>
+    <button class="Btn">插入数据</button>
+    <input type="file"accept="image/*" id="upload" multiple />
+</body>
+    <script>
+      $(document).ready(function(){
+          let Ob = {
+                    username:'admin',
+                    password:'123456'
+          }
+           $.ajax({
+               url:'http://47.99.95.146:8080/api/v1/index/login',
+               contentType: "application/json; charset=utf-8",
+               type :'post',
+               jsonp:true,
+               data:Ob,
+               success:function (res) {
+                   console.log(JSON.parse(res.data))
+               },
+               error : function(e){
+                console.log(e);
+               }
+           })
+
+         $(".Btn").on("click",function () { 
+             let Ob = {
+                'alexa': 1,
+                'country': "USAA",
+                'id': 6,
+                'name': "Google",
+                'url': "https://www.google.cm/",
+             }
+            $.ajax({
+               url:'http://127.0.0.1/InsertData',
+               type :'POST',
+               data:{
+                Ob:JSON.stringify(Ob)
+               },
+               dataType: "json",
+               success:function (res) {
+                   console.log(res)
+               },
+               error : function(e){
+                console.log(e);
+               }
+              })
+          })
+            // $.ajax({
+            //    url:'http://127.0.0.1/GetData',
+            //    type :'POST',
+            //    success:function (res) {
+            //        console.log(JSON.parse(res.data))
+            //    },
+            //    error : function(e){
+            //     console.log(e);
+            //    }
+            //   })
+            // document.getElementById('upload').addEventListener('change', function (event) { //上传图片 源文件
+            //     var $file = event.currentTarget;
+            //     var file = $file.files;
+            //     // 文件名称，文件对象
+            //     for (var i = 0; i < file.length; i++) {
+            //     // 文件名称，文件对象
+            //     formData = new FormData();
+            //     console.log(file[i].name, file[i])
+            //     formData.append(file[i].name, file[i]);
+            //     $.ajax({
+            //         url: 'http://127.0.0.1/UploadImg',
+            //         type: 'POST',
+            //         dataType: 'json',
+            //         data: formData,
+            //         success:function (res) {
+            //             console.log(res)
+            //         },
+            //         contentType: false,
+            //         processData: false
+            //     })
+            //    }
+            // });
+            document.getElementById('upload').addEventListener('change', function (event) { //上传图片 源文件
+                var $file = event.currentTarget;
+                var file = $file.files;
+                let reader = new FileReader();
+                reader.readAsDataURL(file[0]);
+                reader.onload = function(e) { 
+                    formData = new FormData();
+                    $.ajax({
+                        url: 'http://127.0.0.1/UploadImgBlob',
+                        contentType: 'multipart/form-data',
+                        type: 'POST',
+                        data:{
+                            name:e.target.result
+                        },
+                        success:function (res) {
+                            console.log(res)
+                        },
+                        contentType: false,
+                        processData: false
+                    })
+                }
+                // formData = new FormData();
+                // console.log(file[i].name, file[i])
+                // formData.append(file[i].name, file[i]);
+                // $.ajax({
+                //     url: 'http://127.0.0.1/UploadImg',
+                //     type: 'POST',
+                //     dataType: 'json',
+                //     data: formData,
+                //     success:function (res) {
+                //         console.log(res)
+                //     },
+                //     contentType: false,
+                //     processData: false
+                // })
+            });
+    });
+    </script>
+</html>
