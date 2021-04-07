@@ -1,10 +1,23 @@
 <template>
-  <div></div>
+    <router-view/>
 </template>
 
 <script>
 import axios from 'axios'
 export default {
+  created(){
+      const params = `#version=v3.3&appId=saddadsd&status=true&cookie=true&xfbml=true&autoLogAppEvents=true`;
+      (function (d, s, id) {
+      // Load the SDK asynchronously
+      var js;
+      var fjs = d.getElementsByTagName(s)[0];
+      if (d.getElementById(id)) return;
+      js = d.createElement(s);
+      js.id = id;
+      js.src = "https://connect.facebook.net/zh_TW/sdk.js" + params;
+      fjs.parentNode.insertBefore(js, fjs);
+      })(document, "script", "facebook-jssdk");
+  },
    mounted(){
       //  axios.post('http://127.0.0.1:7001/SendBuff','arraybuffer').then(res=>{
       //           const buf = new Buffer.from(res.data.data, 'binary')

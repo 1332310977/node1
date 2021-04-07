@@ -6,41 +6,37 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
-<body>
-    <div class="first-div">Hello World</div>
-    <div class="second-div">Hello World</div>
-    <div class="third-div">Hello World</div>
-    <div class="fourth-div">Hello World</div>
-</body>
 <script>
+ 
+     //验证是否是素数
+    // let arr = [2,3,4,5,6,7,11,87]
+    // for(var i=0;i<arr.length;i++){
+    //     if(arr[i]>1&&(arr[i]%2===1||arr[i]%4===1)){
+    //     console.log(arr[i])
+    //     }
+    // }
+    //回调函数
+    // function A1(callbakc) {
+    //     setTimeout(function name(params) {
+    //         return callbakc(2)
+    //     },2000)
+    // }
+    // A1((data)=>{
+    //     console.log(data)
+    // })
+    // var a = 4,b=3,c=1
+    // if((a>b||a>c)){
+    //     console.log(1)
+    // }
+
+     var a = 1 ;
+     function Func() {
+         var a = 2
+         console.log(this.a)
+     }
+     Func()
 </script>
-    <style scoped>
-         body{
-            font-size: 12px;  
-            }
-            /*html{
-                font-size: 12px;
-            }*/
-            div{
-                width: 200px;
-                height: 100px;
-                float:left
-            }
-            .first-div{
-                font-size: 1em;
-                width: 1em;
-            }
-            .second-div{
-                font-size: 2em;
-                width: 2em;
-            }
-            .third-div{
-                font-size: 1rem;
-                width: 1rem;
-            }
-            .fourth-div{
-                font-size: 2rem;
-                width: 2rem;
-            }
-    </style> 
+<style>
+ 
+</style>  
 </html>

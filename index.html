@@ -49,7 +49,7 @@
                 font-size:28px;   
             }   
         </style>  
-          <body οndragstart="return false;">  
+      <body>
             <div class="main" >  
                 <div class="left">垃圾箱</div>  
                 <div class="right">  
@@ -68,12 +68,16 @@
             </div>  
             <div id="message">拖到垃圾箱删除列表</div>  
         </body>  
-        <!-- <script type="text/javascript">  
+        <script type="text/javascript">  
             window.onload = function(){   
                 var aLi = document.getElementsByTagName('li');   
                 var oLeft = document.getElementsByClassName('left')[0];   
                 var oMessage = document.getElementById('message');   
                 var oMessage1 = document.querySelector('.right');
+                oMessage1.ondragover = function(event) {
+                    event.stopPropagation()
+                    event.preventDefault()
+                }
                 for(var i=0;i<aLi.length;i++){   
                     aLi[i].index = i+1;   
                     aLi[i].ondragstart = function(ev){   
@@ -83,48 +87,46 @@
                     }   
                     aLi[i].ondrag   = function(ev){   
                         var evev = ev || event;   
-                        ev.preventDefault()
+                        evev.stopPropagation()
+                        evev.preventDefault()
                     }   
                     aLi[i].ondragleave   = function(ev){   
                         var evev = ev || event;   
-                        ev.preventDefault()
+                        evev.preventDefault()
+                        evev.stopPropagation()
                         return false
                     }   
-                    aLi[i].ondragend= function(ev){   
-                        return false
-                        var evev = ev || event;  
-                        console.log(evev,ev.preventDefault())
-                        ev.preventDefault()
+                    aLi[i].ondragend= function(e){   
+                        window.event.returnValue=false
+                        window.event.stopPropagation()
+                        window.event.preventDefault()
+                        return false;
                     }   
   
                 }   
                 oLeft.ondrop = function(ev){   
-                    var evev = ev || event;   
-                    ev.preventDefault()
                     var data = ev.dataTransfer.getData("Text");   
                     var num = document.getElementById(data).index;   
                      document.getElementById(data).remove();   
-  
                     oMessage.innerHTML = "列表"+num+"被放进了垃圾箱";   
-  
                     this.style.color = "black";   
   
                     }   
                 oLeft.ondragover = function(ev){   
                     var evev = ev || event;   
-                    ev.preventDefault();   
+                    evev.stopPropagation()
+                    evev.preventDefault();   
                 }   
                 oLeft.ondragenter = function(){   
                     this.style.color = "#fff";   
                 }   
             }   
-        </script>   -->
+        </script>  
   
         <script>
             var buffer = new ArrayBuffer(8);//8内存
             var int32View = new Float64Array(8); //8内存等于一字节 所以长度为1
             int32View[0] = 128
-            console.log(int32View)
         </script>
     </head>  
   

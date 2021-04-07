@@ -9,6 +9,35 @@
     <div onclick="post()">111</div>
 </body>
 <script>
+// function binaryData(ev) {
+//     return JSON.parse(new TextDecoder("utf-8").decode(new Uint8Array(ev.data)))
+// }
+
+// var ws = new WebSocket('ws://127.0.0.1:3653')
+// ws.binaryType = 'arraybuffer';
+// ws.onopen = function() {
+//     // 发送 Hello 消息
+//     ws.send(JSON.stringify({Hello: {
+//         Name: 'leaf'
+//     }}))
+// }
+
+// ws.onmessage = function (ev) {
+//     console.log(binaryData(ev))
+// }
+
+
+var buffer = new ArrayBuffer(8);
+// 创建一个视图，此视图把缓冲内的数据格式化为一个32位（4字节）有符号整数数组
+var int8View = new Int8Array(buffer); /** 8/8 = 1   8 **/
+var int16View = new Int16Array(buffer);  /** 16/8 = 2  **/
+var int32View = new Int32Array(buffer);
+var int64View = new Float64Array(buffer);
+// 我们可以像普通数组一样访问该数组中的元素
+console.log(int8View)
+console.log(int16View)
+console.log(int32View)
+console.log(int64View)
     function post(){
         console.log(Buffer)
         // let htp = new XMLHttpRequest()
